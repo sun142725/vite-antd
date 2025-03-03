@@ -3,7 +3,6 @@ import { LinkOutlined } from '@ant-design/icons';
 import {
   Footer,
   Question,
-  SelectLang,
   AvatarDropdown,
   AvatarName,
 } from "@/components"
@@ -29,7 +28,7 @@ export async function getInitialState() {
 export const layout = ({ initialState, setInitialState }) => ({
   actionsRender: () => [
     <Question key="doc" />,
-    <SelectLang key="SelectLang" />,
+    <span>自定义操作</span>
   ],
   avatarProps: {
     src: initialState?.currentUser?.avatar,
