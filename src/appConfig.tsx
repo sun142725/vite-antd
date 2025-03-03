@@ -35,7 +35,7 @@ export const layout = ({ initialState, setInitialState }) => ({
     src: initialState?.currentUser?.avatar,
     title: <AvatarName />,
     render: (_, avatarChildren) => (
-      <AvatarDropdown>{avatarChildren}</AvatarDropdown>
+      <AvatarDropdown>{avatarChildren}11</AvatarDropdown>
     ),
   },
   footerRender: () => <Footer />,
@@ -67,18 +67,18 @@ export const layout = ({ initialState, setInitialState }) => ({
   links: [
     <Link key="openapi" to="/umi/plugin/openapi" target="_blank">
       <LinkOutlined />
-      <span>OpenAPI 文档</span>
+      <span>更新日志</span>
     </Link>,
   ],
   childrenRender: (children: any) => (
     <>
-      {children}
+      {children}33
       <SettingDrawer
         disableUrlParams
         enableDarkTheme
         settings={initialState?.settings}
         onSettingChange={(settings) => {
-          setInitialState((preState) => ({ ...preState, settings }));
+          setInitialState((preState: any) => ({ ...preState, settings }));
         }}
       />
     </>
