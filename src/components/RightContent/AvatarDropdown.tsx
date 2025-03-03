@@ -1,26 +1,25 @@
-import { outLogin } from '@/services/ant-design-pro/api';
+import { outLogin } from '@/services/user';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { history, useModel } from '@umijs/max';
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
 import { Spin } from 'antd';
-// import { createStyles } from 'antd-style';
-import { stringify } from 'querystring';
 import type { MenuInfo } from 'rc-menu/lib/interface';
 import React, { useCallback } from 'react';
 import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
-
+import qs from 'qs';
 export type GlobalHeaderRightProps = {
   menu?: boolean;
   children?: React.ReactNode;
 };
 
 export const AvatarName = () => {
-  const { initialState } = useModel('@@initialState');
-  const { currentUser } = initialState || {};
+  const currentUser = {};
   return <span className="anticon">{currentUser?.name}</span>;
 };
 
-const useStyles = createStyles(({ token }) => {
+const useStyles = () => {
   return {
     action: {
       display: 'flex',
@@ -30,13 +29,13 @@ const useStyles = createStyles(({ token }) => {
       alignItems: 'center',
       padding: '0 8px',
       cursor: 'pointer',
-      borderRadius: token.borderRadius,
+      borderRadius: '4px',
       '&:hover': {
-        backgroundColor: token.colorBgTextHover,
+        backgroundColor: 'red',
       },
     },
   };
-});
+};
 
 export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, children }) => {
   /**
@@ -52,15 +51,16 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
     if (window.location.pathname !== '/user/login' && !redirect) {
       history.replace({
         pathname: '/user/login',
-        search: stringify({
+        search: qs.stringify({
           redirect: pathname + search,
         }),
       });
     }
   };
-  const { styles } = useStyles();
+  const styles = useStyles();
 
-  const { initialState, setInitialState } = useModel('@@initialState');
+  const initialState = {}; // 这里需要从 props 或上下文中获取
+  const setInitialState = () => {}; // 这里需要从 props 或上下文中获取
 
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
@@ -78,7 +78,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   );
 
   const loading = (
-    <span className={styles.action}>
+    <span style={styles.action}>
       <Spin
         size="small"
         style={{
