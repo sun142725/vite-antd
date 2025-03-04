@@ -1,4 +1,13 @@
+/* index.css */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 @import "tailwindcss";
+
+/* 确保 Ant Design 组件不会被 Tailwind 影响 */
+:where(.css-dev-only-do-not-override-1wazalj).ant-btn {
+  @apply shadow-none;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

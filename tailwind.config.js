@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
+    "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    './node_modules/antd/dist/antd.min.css' // 确保 Tailwind 解析 Ant Design 的类
   ],
   theme: {
     extend: {

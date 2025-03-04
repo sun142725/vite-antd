@@ -25,13 +25,13 @@ export async function getInitialState() {
   return { currentUser, fetchUserInfo };
 }
 
-export const layout = ({ initialState, setInitialState }) => ({
+export const layout = ({}) => ({
   actionsRender: () => [
     <Question key="doc" />,
     <span>自定义操作</span>
   ],
   avatarProps: {
-    src: initialState?.currentUser?.avatar,
+    src: 'https://example.com/avatar.png',
     title: <AvatarName />,
     render: (_, avatarChildren) => (
       <AvatarDropdown>{avatarChildren}11</AvatarDropdown>
@@ -39,7 +39,7 @@ export const layout = ({ initialState, setInitialState }) => ({
   },
   footerRender: () => <Footer />,
   onPageChange: () => {
-    if (!initialState?.currentUser) {
+    if (false) { // 判断是否登录
       window.location.href = loginPath;
     }
   },
@@ -75,9 +75,9 @@ export const layout = ({ initialState, setInitialState }) => ({
       <SettingDrawer
         disableUrlParams
         enableDarkTheme
-        settings={initialState?.settings}
+        // settings={}
         onSettingChange={(settings) => {
-          setInitialState((preState: any) => ({ ...preState, settings }));
+          // setInitialState((preState: any) => ({ ...preState, settings }));
         }}
       />
     </>

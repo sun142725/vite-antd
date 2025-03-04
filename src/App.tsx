@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 import { ProLayout } from "@ant-design/pro-components";
-import { getInitialState, layout } from "./appConfig";
+import { layout } from "./appConfig";
 import { Spin } from "antd";
-import Home from "./pages/Home";
-import About from "./pages/About";
+
+import renderRoutes from './utils/renderRoutes';
+import routes from './routers'; // 你的路由配置文件
 
 const App: React.FC = () => {
-  const [initialState, setInitialState] = useState<any>(null);
 
   useEffect(() => {
-    getInitialState().then((state) => {
-      setInitialState(state);
-    });
   }, []);
 
-  if (!initialState) {
-    return <Spin size="large" style={{ display: "flex", justifyContent: "center", marginTop: 50 }} />;
-  }
+  // if (!initialState) {
+  //   return <Spin size="large" style={{ display: "flex", justifyContent: "center", marginTop: 50 }} />;
+  // }
 
   return (
     <BrowserRouter>
-      <ProLayout {...layout({ initialState, setInitialState })}>
+      <ProLayout {...layout({ })}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          {renderRoutes(routes, {})}
         </Routes>
       </ProLayout>
     </BrowserRouter>
