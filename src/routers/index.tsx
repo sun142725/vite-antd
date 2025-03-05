@@ -6,6 +6,10 @@ import CompressAudio from "../pages/ffmpeg/CompressAudio"
 
 const routes: RouteObject[] = [
   {
+    path: "/",
+    redirect: "/home",
+  },
+  {
     path: "/home",
     Component: Home,
   },

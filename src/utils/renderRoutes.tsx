@@ -6,6 +6,7 @@ type RouteConfig = RouteObject & {
   children?: RouteConfig[];
   component?: React.ElementType;
   menuCode?: string;
+  redirect?: string;
 };
 
 function getCompatProps(props: { match?: { params: any }; params?: any }) {
@@ -24,6 +25,14 @@ function renderRoutes(routes: RouteConfig[], extraProps = {}): React.ReactElemen
     const compatProps = getCompatProps({ ...extraProps });
     const newProps = { ...extraProps, ...compatProps, args: { route } };
     
+    if (route.redirect) {
+      return <Route 
+        key={route.path}
+        path={route.path}
+        element={<Navigate to={route.redirect} replace />}
+      />;
+    }
+
     // if (route.menuCode) {
     //   // 假设这里有权限检查逻辑，可替换为你的权限校验方式
     //   const hasAuth = true; // 这里应使用你的权限校验逻辑
