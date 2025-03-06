@@ -3,11 +3,9 @@ import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
 
 const baseURL = "https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.9/dist/esm";
-const videoURL = "https://raw.githubusercontent.com/ffmpegwasm/testdata/master/video-15s.avi";
 
 export default function App() {
   const [message, setMessage] = useState("Click Start to Transcode");
-  const [video, setVideo] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
   const ffmpeg = useRef(new FFmpeg());
 
@@ -49,7 +47,7 @@ export default function App() {
       await ffmpeg.current.writeFile(inputFile.name, await fetchFile(inputFile));
       await ffmpeg.current.exec(["-i", inputFile.name, "-c:a", "aac", "-b:a", "128k", "output.aac"]);
       
-      const data = await ffmpeg.current.readFile("output.aac");
+      const data: any = await ffmpeg.current.readFile("output.aac");
       const audioBlob = new Blob([data.buffer], { type: "audio/aac" });
       console.timeEnd("压缩为aac文件");
       return URL.createObjectURL(audioBlob);
@@ -61,8 +59,6 @@ export default function App() {
 
   return (
     <div className="p-6 text-center">
-      <video src={video} controls className="w-full max-w-md mx-auto" />
-      <br />
       <button onClick={transcode} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
         Start
       </button>

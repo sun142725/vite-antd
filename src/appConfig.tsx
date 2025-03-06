@@ -9,7 +9,6 @@ import {
 import { SettingDrawer } from "@ant-design/pro-components";
 import { errorConfig } from "./requestErrorConfig";
 
-const loginPath = "/user/login";
 
 export async function getInitialState() {
   const fetchUserInfo = async () => {
@@ -25,7 +24,7 @@ export async function getInitialState() {
   return { currentUser, fetchUserInfo };
 }
 
-export const layout = ({}) => ({
+export const layout = () => ({
   actionsRender: () => [
     <Question key="doc" />,
     <span>自定义操作</span>
@@ -33,15 +32,15 @@ export const layout = ({}) => ({
   avatarProps: {
     src: 'https://example.com/avatar.png',
     title: <AvatarName />,
-    render: (_, avatarChildren) => (
+    render: (_: any, avatarChildren: any) => (
       <AvatarDropdown>{avatarChildren}11</AvatarDropdown>
     ),
   },
   footerRender: () => <Footer />,
   onPageChange: () => {
-    if (false) { // 判断是否登录
-      window.location.href = loginPath;
-    }
+    // if (false) { // 判断是否登录
+    //   window.location.href = loginPath;
+    // }
   },
   bgLayoutImgList: [
     {
@@ -76,7 +75,7 @@ export const layout = ({}) => ({
         disableUrlParams
         enableDarkTheme
         // settings={}
-        onSettingChange={(settings) => {
+        onSettingChange={() => {
           // setInitialState((preState: any) => ({ ...preState, settings }));
         }}
       />

@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
-import NotFoundPage from "../pages/404";
+// import NotFoundPage from "../pages/404";
 import CompressAudio from "../pages/ffmpeg/CompressAudio"
 
 const routes: RouteObject[] = [

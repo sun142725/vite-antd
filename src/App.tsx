@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes } from "react-router-dom";
 import { ProLayout } from "@ant-design/pro-components";
 import { layout } from "./appConfig";
-import { Spin } from "antd";
 
 import renderRoutes from './utils/renderRoutes';
 import routes from './routers'; // 你的路由配置文件
@@ -18,7 +17,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <ProLayout {...layout({ })}>
+      <ProLayout {...layout()}>
         <Routes>
           {renderRoutes(routes, {})}
         </Routes>

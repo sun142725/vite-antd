@@ -1,5 +1,5 @@
 // src/store/userSlice.ts
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 // import api from "@/api"; // 假设有一个 API 文件
 
 // 异步获取用户数据
@@ -16,7 +16,7 @@ const userSlice = createSlice({
       state.name = action.payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: () => {
     // builder.addCase(fetchUser.fulfilled, (state, action) => {
     //   state.name = action.payload;
     // });

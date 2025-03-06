@@ -5,11 +5,18 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "types": ["node"],
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]  // 让 TypeScript 知道 @ 指向 src
-    }
-  }
+      "@/*": ["src/*"]
+    },
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

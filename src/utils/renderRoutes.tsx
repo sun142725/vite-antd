@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRoutes, RouteObject, Navigate, Route } from 'react-router-dom';
+import { RouteObject, Navigate, Route } from 'react-router-dom';
 
 type RouteConfig = RouteObject & {
   key?: string;
