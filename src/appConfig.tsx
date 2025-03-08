@@ -33,7 +33,7 @@ export const layout = () => ({
     src: 'https://example.com/avatar.png',
     title: <AvatarName />,
     render: (_: any, avatarChildren: any) => (
-      <AvatarDropdown>{avatarChildren}11</AvatarDropdown>
+      <AvatarDropdown>{avatarChildren}</AvatarDropdown>
     ),
   },
   footerRender: () => <Footer />,
