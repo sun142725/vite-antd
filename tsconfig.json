@@ -5,18 +5,25 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true, 
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": false,
+    "module": "esnext",
     "moduleResolution": "bundler",
     "types": ["node"],
     "jsx": "react-jsx",
     "baseUrl": "./",
+    "outDir": "./dist", 
     "paths": {
       "@/*": ["src/*"]
     },
-    "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

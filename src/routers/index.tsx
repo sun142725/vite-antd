@@ -3,8 +3,11 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 // import NotFoundPage from "../pages/404";
 import CompressAudio from "../pages/ffmpeg/CompressAudio"
+type RouteConfig = RouteObject & {
+  redirect?: string;
+};
 
-const routes: RouteObject[] = [
+const routes: RouteConfig[] = [
   {
     path: "",
     redirect: "/home",
