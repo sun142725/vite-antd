@@ -33,6 +33,10 @@ body {
 button:hover {
   border-color: #646cff;
 }
+#root{
+  width: 100%;
+  height: 100%;
+}
 
 
 

@@ -27,16 +27,19 @@ export async function getInitialState() {
 export const layout = () => ({
   actionsRender: () => [
     <Question key="doc" />,
-    <span>自定义操作</span>
+    <span>自定义操作</span>,
   ],
   avatarProps: {
-    src: 'https://example.com/avatar.png',
+    src: "https://example.com/avatar.png",
     title: <AvatarName />,
     render: (_: any, avatarChildren: any) => (
       <AvatarDropdown>{avatarChildren}</AvatarDropdown>
     ),
   },
-  footerRender: () => <Footer />,
+  footerRender: () => {
+    console.log('footerRender 执行了')
+    return <Footer />
+  },
   onPageChange: () => {
     // if (false) { // 判断是否登录
     //   window.location.href = loginPath;
@@ -68,19 +71,6 @@ export const layout = () => ({
       <span>更新日志</span>
     </Link>,
   ],
-  childrenRender: (children: any) => (
-    <>
-      {children}33
-      <SettingDrawer
-        disableUrlParams
-        enableDarkTheme
-        // settings={}
-        onSettingChange={() => {
-          // setInitialState((preState: any) => ({ ...preState, settings }));
-        }}
-      />
-    </>
-  ),
 });
 
 export const request = {

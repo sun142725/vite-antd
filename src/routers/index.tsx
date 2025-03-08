@@ -6,15 +6,15 @@ import CompressAudio from "../pages/ffmpeg/CompressAudio"
 
 const routes: RouteObject[] = [
   {
-    path: "/",
+    path: "",
     redirect: "/home",
   },
   {
-    path: "/home",
+    path: "home",
     Component: Home,
   },
-  { path: "/about", Component: About },
-  { path: "/compress-audio", Component: CompressAudio },
+  { path: "about", Component: About },
+  { path: "compress-audio", Component: CompressAudio },
 ];
 
 export default routes;

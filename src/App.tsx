@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { ProLayout } from "@ant-design/pro-components";
 import { layout } from "./appConfig";
-
+import Home from "./pages/Home";
+import NotFound from "./pages/404"
 import renderRoutes from './utils/renderRoutes';
 import routes from './routers'; // 你的路由配置文件
 
@@ -17,11 +18,13 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <ProLayout {...layout()}>
         <Routes>
-          {renderRoutes(routes, {})}
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/layout" element={<ProLayout {...layout()} ><Outlet /></ProLayout>}>
+            {renderRoutes(routes, {})}
+          </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
-      </ProLayout>
     </BrowserRouter>
   );
 };
