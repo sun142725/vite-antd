@@ -20,7 +20,7 @@ function generateNumbers() {
   };
 }
 
-function App() {
+function BigLottery() {
   const [numbers, setNumbers] = useState(generateNumbers());
   const [isSpinning, setIsSpinning] = useState(false);
 
@@ -105,4 +105,4 @@ function App() {
   );
 }
 
-export default App;
+export default BigLottery;
