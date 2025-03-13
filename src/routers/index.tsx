@@ -20,7 +20,7 @@ const routes: RouteConfig[] = [
   },
   {
     path: "lottery",
-    redirect: "lottery/gua",
+    redirect: "/layout/lottery/gua",
     children: [
       {
         path: "gua",
